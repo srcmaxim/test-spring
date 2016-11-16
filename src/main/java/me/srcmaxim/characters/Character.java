@@ -11,11 +11,15 @@ public abstract class Character {
     protected int armorPoints;
 
     public Character(String name, Weapon weapon, int strenghtPoints, int helthPoints, int armorPoints) {
-        this.name = name;
-        this.weapon = weapon;
+        this(name, weapon);
         this.strenghtPoints = strenghtPoints;
         this.helthPoints = helthPoints;
         this.armorPoints = armorPoints;
+    }
+
+    public Character(String name, Weapon weapon) {
+        this.name = name;
+        this.weapon = weapon;
     }
 
     public Character() {

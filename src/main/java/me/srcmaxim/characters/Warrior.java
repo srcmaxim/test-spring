@@ -8,6 +8,10 @@ public class Warrior extends Character {
         super(name, weapon, strenghtPoints, helthPoints, armorPoints);
     }
 
+    public Warrior(String name, Weapon weapon) {
+        super(name, weapon);
+    }
+
     public Warrior() {
     }
 

@@ -8,6 +8,10 @@ public class Dragon extends Character {
         super(name, weapon, strenghtPoints, helthPoints, armorPoints);
     }
 
+    public Dragon(String name, Weapon weapon) {
+        super(name, weapon);
+    }
+
     public Dragon() {
     }
 
