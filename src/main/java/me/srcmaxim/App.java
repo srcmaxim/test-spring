@@ -11,8 +11,5 @@ public class App {
         World world = (World) context.getBean("world");
 
         System.out.println(world);
-
-        System.out.print("Scopes: warior - prototype, dragon - singletone: ");
-        world.getCharacters().stream().forEach(a -> System.out.print(" " + a.getClass().getSimpleName() + " " + a.hashCode() + ", "));
     }
 }

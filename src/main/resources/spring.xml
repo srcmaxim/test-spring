@@ -5,19 +5,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <bean id="world" class="me.srcmaxim.World">
-        <property name="characters" >
-            <list>
-                <ref bean="dragon"/>
-                <ref bean="dragon"/>
-                <ref bean="warrior"/>
-                <ref bean="warrior"/>
-                <ref bean="warrior"/>
-            </list>
-        </property>
-    </bean>
+    <bean id="world" class="me.srcmaxim.World" autowire="byName"/>
 
-    <bean id="warrior" class="me.srcmaxim.characters.Warrior" scope="prototype">
+    <bean id="warrior" class="me.srcmaxim.characters.Warrior">
         <property name="name" value="Maxim"/>
         <property name="weapon">
             <bean class="me.srcmaxim.weapons.Sword">
@@ -29,7 +19,7 @@
         <property name="armorPoints" value="100"/>
     </bean>
 
-    <bean id="dragon" class="me.srcmaxim.characters.Dragon" scope="singleton">
+    <bean id="dragon" class="me.srcmaxim.characters.Dragon">
         <property name="name" value="Avalon"/>
         <property name="weapon">
             <bean class="me.srcmaxim.weapons.FireBreath">
