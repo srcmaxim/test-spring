@@ -5,31 +5,31 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    /*
-        You may also specify name type index
-        in constructor-arg or property itself
-    */
+    <alias name="warrior" alias="warrior-alias"/>
+    <alias name="dragon" alias="dragon-alias"/>
 
-    <bean id="warrior" class="me.srcmaxim.characters.Warrior">
-        <constructor-arg name="name" value="Maxim"/>
-        <constructor-arg name="weapon" ref="sword"/>
+    <bean id="warrior" name="warrior-name" class="me.srcmaxim.characters.Warrior">
+        <property name="name" value="Maxim"/>
+        <property name="weapon">
+            <bean class="me.srcmaxim.weapons.Sword">
+                <constructor-arg name="damagePoints" value="10"/>
+            </bean>
+        </property>
         <property name="helthPoints" value="100"/>
         <property name="strenghtPoints" value="100"/>
         <property name="armorPoints" value="100"/>
     </bean>
-    <bean id="sword" class="me.srcmaxim.weapons.Sword">
-        <constructor-arg name="damagePoints" value="10"/>
-    </bean>
 
-    <bean id="dragon" class="me.srcmaxim.characters.Dragon">
+    <bean id="dragon" name="dragon-name" class="me.srcmaxim.characters.Dragon">
         <constructor-arg name="name" value="Avalon"/>
-        <constructor-arg name="weapon" ref="fire"/>
+        <constructor-arg name="weapon">
+            <bean class="me.srcmaxim.weapons.FireBreath">
+                <constructor-arg name="damagePoints" value="40"/>
+            </bean>
+        </constructor-arg>
         <property name="helthPoints" value="60"/>
         <property name="strenghtPoints" value="60"/>
         <property name="armorPoints" value="60"/>
-    </bean>
-    <bean id="fire" class="me.srcmaxim.weapons.FireBreath">
-        <constructor-arg name="damagePoints" value="40"/>
     </bean>
 
 </beans>
