@@ -12,59 +12,29 @@ import sun.net.www.ApplicationLaunchException;
 import java.util.Arrays;
 import java.util.List;
 
-public class World implements ApplicationContextAware, BeanNameAware{
+public class World {
 
-    private Warrior warrior;
-    private Dragon dragon;
-
-    private ApplicationContext applicationContext;
-    private String beanName;
+    private List<Character> characters;
 
     public World() {
     }
 
-    public World(Warrior warrior, Dragon dragon) {
-        this.warrior = warrior;
-        this.dragon = dragon;
+    public World(List<Character> characters) {
+        this.characters = characters;
     }
 
-    public Warrior getWarrior() {
-        return warrior;
+    public List<Character> getCharacters() {
+        return characters;
     }
 
-    public void setWarrior(Warrior warrior) {
-        this.warrior = warrior;
-    }
-
-    public Dragon getDragon() {
-        return dragon;
-    }
-
-    public void setDragon(Dragon dragon) {
-        this.dragon = dragon;
-    }
-
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        this.applicationContext = applicationContext;
-
-        System.out.print("World bean aliases: ");
-        String[] worlds = applicationContext.getAliases("world");
-        String s = Arrays.stream(worlds).reduce((s1, s2) -> s1 + ", " + s2).get();
-        System.out.println(s);
-    }
-
-    @Override
-    public void setBeanName(String beanName) {
-        this.beanName = beanName;
-        System.out.println("Bean name: " + beanName);
+    public void setCharacters(List<Character> characters) {
+        this.characters = characters;
     }
 
     @Override
     public String toString() {
         return "World{" +
-                "warrior=" + warrior +
-                ", dragon=" + dragon +
+                "characters=" + characters +
                 '}';
     }
 }
