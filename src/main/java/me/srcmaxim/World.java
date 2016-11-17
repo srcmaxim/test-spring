@@ -1,18 +1,13 @@
 package me.srcmaxim;
 
 import me.srcmaxim.characters.Character;
-import me.srcmaxim.characters.Dragon;
-import me.srcmaxim.characters.Warrior;
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.BeanNameAware;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
-import sun.net.www.ApplicationLaunchException;
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class World {
+public class World implements InitializingBean, DisposableBean {
 
     private List<Character> characters;
 
@@ -36,5 +31,15 @@ public class World {
         return "World{" +
                 "characters=" + characters +
                 '}';
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        System.out.println("Initializing bean method was called");
+    }
+
+    @Override
+    public void destroy() throws Exception {
+        System.out.println("Disposing bean method was called");
     }
 }

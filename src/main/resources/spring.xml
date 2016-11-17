@@ -3,45 +3,37 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd"
+default-init-method="afterPropertiesSet" default-destroy-method="destroy">
 
-    <bean id="world-parent" class="me.srcmaxim.World">
-        <property name="characters">
-            <list>
-                <ref bean="warrior"/>
-            </list>
-        </property>
-    </bean>
-
-    <bean id="world" class="me.srcmaxim.World" parent="world-parent">
+    <bean id="world" class="me.srcmaxim.World"
+          init-method="afterPropertiesSet" destroy-method="destroy">
         <property name="characters">
             <list merge="true">
-                <ref bean="dragon"/>
+                <bean id="warrior" class="me.srcmaxim.characters.Warrior">
+                    <property name="name" value="Maxim"/>
+                    <property name="weapon">
+                        <bean class="me.srcmaxim.weapons.Sword">
+                            <constructor-arg name="damagePoints" value="10"/>
+                        </bean>
+                    </property>
+                    <property name="helthPoints" value="100"/>
+                    <property name="strenghtPoints" value="100"/>
+                    <property name="armorPoints" value="100"/>
+                </bean>
+
+                <bean id="dragon" class="me.srcmaxim.characters.Dragon">
+                    <property name="name" value="Avalon"/>
+                    <property name="weapon">
+                        <bean class="me.srcmaxim.weapons.FireBreath">
+                            <constructor-arg name="damagePoints" value="40"/>
+                        </bean>
+                    </property>
+                    <property name="helthPoints" value="100"/>
+                    <property name="strenghtPoints" value="100"/>
+                    <property name="armorPoints" value="100"/>
+                </bean>
             </list>
-        </property>
-    </bean>
-
-    <bean id="character" class="me.srcmaxim.characters.Character" abstract="true">
-        <property name="helthPoints" value="100"/>
-        <property name="strenghtPoints" value="100"/>
-        <property name="armorPoints" value="100"/>
-    </bean>
-
-    <bean id="warrior" class="me.srcmaxim.characters.Warrior" parent="character">
-        <property name="name" value="Maxim"/>
-        <property name="weapon">
-            <bean class="me.srcmaxim.weapons.Sword">
-                <constructor-arg name="damagePoints" value="10"/>
-            </bean>
-        </property>
-    </bean>
-
-    <bean id="dragon" class="me.srcmaxim.characters.Dragon" parent="character">
-        <property name="name" value="Avalon"/>
-        <property name="weapon">
-            <bean class="me.srcmaxim.weapons.FireBreath">
-                <constructor-arg name="damagePoints" value="40"/>
-            </bean>
         </property>
     </bean>
 
