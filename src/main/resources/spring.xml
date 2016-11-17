@@ -5,9 +5,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <bean id="world" class="me.srcmaxim.World" autowire="byName"/>
+    <alias name="world" alias="world-alias"/>
 
-    <bean id="warrior" class="me.srcmaxim.characters.Warrior">
+    <bean id="world" name="world-name" class="me.srcmaxim.World" autowire="byName" scope="prototype"/>
+
+    <bean id="warrior" class="me.srcmaxim.characters.Warrior" scope="prototype">
         <property name="name" value="Maxim"/>
         <property name="weapon">
             <bean class="me.srcmaxim.weapons.Sword">
@@ -19,7 +21,7 @@
         <property name="armorPoints" value="100"/>
     </bean>
 
-    <bean id="dragon" class="me.srcmaxim.characters.Dragon">
+    <bean id="dragon" class="me.srcmaxim.characters.Dragon" scope="prototype">
         <property name="name" value="Avalon"/>
         <property name="weapon">
             <bean class="me.srcmaxim.weapons.FireBreath">
