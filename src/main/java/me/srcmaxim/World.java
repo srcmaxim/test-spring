@@ -7,7 +7,7 @@ import org.springframework.beans.factory.InitializingBean;
 import java.util.Arrays;
 import java.util.List;
 
-public class World implements InitializingBean, DisposableBean {
+public class World {
 
     private List<Character> characters;
 
@@ -31,15 +31,5 @@ public class World implements InitializingBean, DisposableBean {
         return "World{" +
                 "characters=" + characters +
                 '}';
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        System.out.println("Initializing bean method was called");
-    }
-
-    @Override
-    public void destroy() throws Exception {
-        System.out.println("Disposing bean method was called");
     }
 }
