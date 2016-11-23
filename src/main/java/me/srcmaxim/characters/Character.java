@@ -1,6 +1,8 @@
 package me.srcmaxim.characters;
 
 import me.srcmaxim.weapons.Weapon;
+import org.springframework.beans.factory.annotation.Required;
+
 
 public abstract class Character {
 
@@ -35,7 +37,7 @@ public abstract class Character {
     protected abstract int getAttackPoints();
 
 
-    public void defend(int damage){
+    private void defend(int damage){
         int currentDamage = damage - armorPoints;
         helthPoints -= currentDamage;
         if (helthPoints <= 0) System.out.println("Character dead: " + this.toString());
@@ -53,6 +55,7 @@ public abstract class Character {
         return weapon;
     }
 
+    @Required
     public void setWeapon(Weapon weapon) {
         this.weapon = weapon;
     }

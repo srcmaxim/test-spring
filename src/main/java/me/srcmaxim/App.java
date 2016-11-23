@@ -9,10 +9,10 @@ public class App {
     public static void main(String[] args) {
         AbstractApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 
-        World world = (World) context.getBean("world");
+        Character characterA = (Character) context.getBean("dragon");
+        Character characterB = (Character) context.getBean("warrior");
 
-        System.out.println(world);
+        characterA.attack(characterB);
 
-        context.registerShutdownHook();
     }
 }

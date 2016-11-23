@@ -5,40 +5,30 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <bean class="me.srcmaxim.MyBeanFactoryPostProcessor"/>
-    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="locations" value="pointsconfig.properties"/>
+    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+
+    <bean id="warrior" class="me.srcmaxim.characters.Warrior">
+        <property name="name" value="Maxim"/>
+        <!--<property name="weapon" ref="sword"/>-->
+        <property name="helthPoints" value="100"/>
+        <property name="strenghtPoints" value="100"/>
+        <property name="armorPoints" value="100"/>
     </bean>
 
-
-    <bean id="world" class="me.srcmaxim.World">
-        <property name="characters">
-            <list merge="true">
-                <bean id="warrior" class="me.srcmaxim.characters.Warrior">
-                    <property name="name" value="Maxim"/>
-                    <property name="weapon">
-                        <bean class="me.srcmaxim.weapons.Sword" name="sword">
-                            <constructor-arg name="damagePoints" value="10"/>
-                        </bean>
-                    </property>
-                    <property name="helthPoints" value="${warrior.helthPoints}"/>
-                    <property name="strenghtPoints" value="${warrior.strenghtPoints}"/>
-                    <property name="armorPoints" value="${warrior.armorPoints}"/>
-                </bean>
-
-                <bean id="dragon" class="me.srcmaxim.characters.Dragon">
-                    <property name="name" value="Avalon"/>
-                    <property name="weapon">
-                        <bean class="me.srcmaxim.weapons.FireBreath" name="fireBreath">
-                            <constructor-arg name="damagePoints" value="40"/>
-                        </bean>
-                    </property>
-                    <property name="helthPoints" value="${dragon.helthPoints}"/>
-                    <property name="strenghtPoints" value="${dragon.strenghtPoints}"/>
-                    <property name="armorPoints" value="${dragon.armorPoints}"/>
-                </bean>
-            </list>
-        </property>
+    <bean id="dragon" class="me.srcmaxim.characters.Dragon">
+        <property name="name" value="Avalon"/>
+        <!--<property name="weapon" ref="fireBreath"/>-->
+        <property name="helthPoints" value="100"/>
+        <property name="strenghtPoints" value="100"/>
+        <property name="armorPoints" value="100"/>
     </bean>
+
+    <bean id="sword" class="me.srcmaxim.weapons.Sword">
+        <property name="damagePoints" value="100"/>
+    </bean>
+    <bean id="fireBreath" class="me.srcmaxim.weapons.FireBreath">
+        <property name="damagePoints" value="100"/>
+    </bean>
+
 
 </beans>
