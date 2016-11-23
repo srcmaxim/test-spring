@@ -1,14 +1,19 @@
 package me.srcmaxim.characters;
 
 import me.srcmaxim.weapons.FireBreath;
+import me.srcmaxim.weapons.Weapon;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.MessageSource;
+import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 
+@Component
 public class Dragon extends Character {
 
     FireBreath concreteFireBreath;
+    MessageSource messageSource;
 
     public Dragon(String name, int strenghtPoints, int helthPoints, int armorPoints) {
         super(name, strenghtPoints, helthPoints, armorPoints);
@@ -18,7 +23,8 @@ public class Dragon extends Character {
     }
 
     public void move() {
-        System.out.println("Dragon " + name + " flying");
+        String message = messageSource.getMessage("dragon.move", new Object[]{getName()}, "default message", null);
+        System.out.println(message);
     }
 
     protected int getAttackPoints() {
@@ -29,18 +35,24 @@ public class Dragon extends Character {
         return concreteFireBreath;
     }
 
-    @Resource(name = "fireBreath")
+    @Autowired
     public void setConcreteFireBreath(FireBreath concreteFireBreath) {
         this.concreteFireBreath = concreteFireBreath;
     }
 
-    @PostConstruct
-    public void initializeDragon() {
-        System.out.println("PostConstruct: Init of Dargon");
+    public MessageSource getMessageSource() {
+        return messageSource;
     }
 
-    @PreDestroy
-    public void destroyDragon() {
-        System.out.println("PreDestroy: Destroy of Dragon");
+    @Autowired
+    public void setMessageSource(MessageSource messageSource) {
+        this.messageSource = messageSource;
     }
+
+    @Override
+    @Resource(name = "fireBreath")
+    public void setWeapon(Weapon weapon) {
+        super.setWeapon(weapon);
+    }
+
 }

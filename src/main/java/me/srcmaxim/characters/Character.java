@@ -1,8 +1,11 @@
 package me.srcmaxim.characters;
 
+import me.srcmaxim.weapons.Weapon;
+
 public abstract class Character {
 
     protected String name;
+    protected Weapon weapon;
     protected int strenghtPoints;
     protected int helthPoints;
     protected int armorPoints;
@@ -69,10 +72,19 @@ public abstract class Character {
         this.armorPoints = armorPoints;
     }
 
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
     @Override
     public String toString() {
-        return this.getClass().getSimpleName() + "{" +
+        return "Character{" +
                 "name='" + name + '\'' +
+                ", weapon=" + weapon.getDamagePoints() +
                 ", strenghtPoints=" + strenghtPoints +
                 ", helthPoints=" + helthPoints +
                 ", armorPoints=" + armorPoints +

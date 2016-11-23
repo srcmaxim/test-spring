@@ -14,6 +14,11 @@ public class App {
         Character characterB = (Character) context.getBean("warrior");
         characterA.attack(characterB);
 
+        String message = context.getMessage("sword.damagePoints", null, "defaultMessage", null);
+        System.out.println(message);
+        characterA.move();
+        characterB.move();
+
         context.registerShutdownHook();
     }
 }
