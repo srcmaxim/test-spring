@@ -1,15 +1,14 @@
 package me.srcmaxim.characters;
 
-import me.srcmaxim.weapons.Weapon;
+import me.srcmaxim.weapons.FireBreath;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class Dragon extends Character {
 
-    public Dragon(String name, Weapon weapon, int strenghtPoints, int helthPoints, int armorPoints) {
-        super(name, weapon, strenghtPoints, helthPoints, armorPoints);
-    }
+    FireBreath dragonFireBreath;
 
-    public Dragon(String name, Weapon weapon) {
-        super(name, weapon);
+    public Dragon(String name, int strenghtPoints, int helthPoints, int armorPoints) {
+        super(name, strenghtPoints, helthPoints, armorPoints);
     }
 
     public Dragon() {
@@ -20,7 +19,15 @@ public class Dragon extends Character {
     }
 
     protected int getAttackPoints() {
-        return weapon.getDamagePoints() * (strenghtPoints + 30);
+        return dragonFireBreath.getDamagePoints() * (strenghtPoints + 30);
     }
 
+    public FireBreath getDragonFireBreath() {
+        return dragonFireBreath;
+    }
+
+    @Autowired
+    public void setDragonFireBreath(FireBreath dragonFireBreath) {
+        this.dragonFireBreath = dragonFireBreath;
+    }
 }

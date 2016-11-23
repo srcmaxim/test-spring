@@ -5,11 +5,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <bean class="org.springframework.beans.factory.annotation.RequiredAnnotationBeanPostProcessor"/>
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
 
     <bean id="warrior" class="me.srcmaxim.characters.Warrior">
         <property name="name" value="Maxim"/>
-        <!--<property name="weapon" ref="sword"/>-->
         <property name="helthPoints" value="100"/>
         <property name="strenghtPoints" value="100"/>
         <property name="armorPoints" value="100"/>
@@ -17,16 +16,15 @@
 
     <bean id="dragon" class="me.srcmaxim.characters.Dragon">
         <property name="name" value="Avalon"/>
-        <!--<property name="weapon" ref="fireBreath"/>-->
         <property name="helthPoints" value="100"/>
         <property name="strenghtPoints" value="100"/>
         <property name="armorPoints" value="100"/>
     </bean>
 
-    <bean id="sword" class="me.srcmaxim.weapons.Sword">
+    <bean id="warriorSword" class="me.srcmaxim.weapons.Sword">
         <property name="damagePoints" value="100"/>
     </bean>
-    <bean id="fireBreath" class="me.srcmaxim.weapons.FireBreath">
+    <bean id="dragonFireBreath" class="me.srcmaxim.weapons.FireBreath">
         <property name="damagePoints" value="100"/>
     </bean>
 

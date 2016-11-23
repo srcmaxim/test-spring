@@ -1,15 +1,15 @@
 package me.srcmaxim.characters;
 
-import me.srcmaxim.weapons.Weapon;
+import me.srcmaxim.weapons.Sword;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class Warrior extends Character {
 
-    public Warrior(String name, Weapon weapon, int strenghtPoints, int helthPoints, int armorPoints) {
-        super(name, weapon, strenghtPoints, helthPoints, armorPoints);
-    }
+    Sword warriorSword;
 
-    public Warrior(String name, Weapon weapon) {
-        super(name, weapon);
+    public Warrior(String name, int strenghtPoints, int helthPoints, int armorPoints, Sword warriorSword) {
+        super(name, strenghtPoints, helthPoints, armorPoints);
+        this.warriorSword = warriorSword;
     }
 
     public Warrior() {
@@ -20,8 +20,16 @@ public class Warrior extends Character {
     }
 
     protected int getAttackPoints() {
-        return (weapon.getDamagePoints() + 10) * strenghtPoints;
+        return (warriorSword.getDamagePoints() + 10) * strenghtPoints;
     }
 
 
+    public Sword getWarriorSword() {
+        return warriorSword;
+    }
+
+    @Autowired
+    public void setWarriorSword(Sword warriorSword) {
+        this.warriorSword = warriorSword;
+    }
 }

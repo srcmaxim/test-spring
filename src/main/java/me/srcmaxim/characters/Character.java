@@ -1,27 +1,21 @@
 package me.srcmaxim.characters;
 
-import me.srcmaxim.weapons.Weapon;
-import org.springframework.beans.factory.annotation.Required;
-
-
 public abstract class Character {
 
     protected String name;
-    protected Weapon weapon;
     protected int strenghtPoints;
     protected int helthPoints;
     protected int armorPoints;
 
-    public Character(String name, Weapon weapon, int strenghtPoints, int helthPoints, int armorPoints) {
-        this(name, weapon);
+    public Character(String name, int strenghtPoints, int helthPoints, int armorPoints) {
+        this(name);
         this.strenghtPoints = strenghtPoints;
         this.helthPoints = helthPoints;
         this.armorPoints = armorPoints;
     }
 
-    public Character(String name, Weapon weapon) {
+    public Character(String name) {
         this.name = name;
-        this.weapon = weapon;
     }
 
     public Character() {
@@ -49,15 +43,6 @@ public abstract class Character {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Weapon getWeapon() {
-        return weapon;
-    }
-
-    @Required
-    public void setWeapon(Weapon weapon) {
-        this.weapon = weapon;
     }
 
     public int getStrenghtPoints() {
@@ -88,7 +73,6 @@ public abstract class Character {
     public String toString() {
         return this.getClass().getSimpleName() + "{" +
                 "name='" + name + '\'' +
-                ", weapon=" + weapon +
                 ", strenghtPoints=" + strenghtPoints +
                 ", helthPoints=" + helthPoints +
                 ", armorPoints=" + armorPoints +
