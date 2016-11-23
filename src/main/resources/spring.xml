@@ -5,7 +5,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-    <bean class="me.srcmaxim.DisplayNameBeanPostProcessor"/>
+    <bean class="me.srcmaxim.MyBeanFactoryPostProcessor"/>
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="pointsconfig.properties"/>
+    </bean>
+
 
     <bean id="world" class="me.srcmaxim.World">
         <property name="characters">
@@ -17,9 +21,9 @@
                             <constructor-arg name="damagePoints" value="10"/>
                         </bean>
                     </property>
-                    <property name="helthPoints" value="100"/>
-                    <property name="strenghtPoints" value="100"/>
-                    <property name="armorPoints" value="100"/>
+                    <property name="helthPoints" value="${warrior.helthPoints}"/>
+                    <property name="strenghtPoints" value="${warrior.strenghtPoints}"/>
+                    <property name="armorPoints" value="${warrior.armorPoints}"/>
                 </bean>
 
                 <bean id="dragon" class="me.srcmaxim.characters.Dragon">
@@ -29,9 +33,9 @@
                             <constructor-arg name="damagePoints" value="40"/>
                         </bean>
                     </property>
-                    <property name="helthPoints" value="100"/>
-                    <property name="strenghtPoints" value="100"/>
-                    <property name="armorPoints" value="100"/>
+                    <property name="helthPoints" value="${dragon.helthPoints}"/>
+                    <property name="strenghtPoints" value="${dragon.strenghtPoints}"/>
+                    <property name="armorPoints" value="${dragon.armorPoints}"/>
                 </bean>
             </list>
         </property>
