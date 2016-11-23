@@ -22,8 +22,11 @@
         <property name="armorPoints" value="100"/>
     </bean>
 
-    <bean id="concreteSword" class="me.srcmaxim.weapons.Sword">
-        <qualifier value="sword"/>
+    <bean id="sword" class="me.srcmaxim.weapons.Sword">
+        <property name="damagePoints" value="100"/>
+    </bean>
+    <bean id="fireBreath" class="me.srcmaxim.weapons.FireBreath">
+        <qualifier value="fireBreath"/>
         <property name="damagePoints" value="100"/>
     </bean>
     <bean id="concreteFireBreath" class="me.srcmaxim.weapons.FireBreath">

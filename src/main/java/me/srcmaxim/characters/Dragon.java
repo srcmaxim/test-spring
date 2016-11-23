@@ -1,8 +1,10 @@
 package me.srcmaxim.characters;
 
 import me.srcmaxim.weapons.FireBreath;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.annotation.Resource;
 
 public class Dragon extends Character {
 
@@ -27,9 +29,18 @@ public class Dragon extends Character {
         return concreteFireBreath;
     }
 
-    @Autowired
-    @Qualifier("fireBreath")
-    public void setConcreteFireBreath(@Qualifier("fireBreath") FireBreath concreteFireBreath) {
+    @Resource(name = "fireBreath")
+    public void setConcreteFireBreath(FireBreath concreteFireBreath) {
         this.concreteFireBreath = concreteFireBreath;
+    }
+
+    @PostConstruct
+    public void initializeDragon() {
+        System.out.println("PostConstruct: Init of Dargon");
+    }
+
+    @PreDestroy
+    public void destroyDragon() {
+        System.out.println("PreDestroy: Destroy of Dragon");
     }
 }

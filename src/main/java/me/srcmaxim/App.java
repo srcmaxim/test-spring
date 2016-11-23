@@ -8,11 +8,12 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class App {
     public static void main(String[] args) {
         AbstractApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+        context.start();
 
         Character characterA = (Character) context.getBean("dragon");
         Character characterB = (Character) context.getBean("warrior");
-
         characterA.attack(characterB);
 
+        context.registerShutdownHook();
     }
 }

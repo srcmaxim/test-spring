@@ -1,8 +1,8 @@
 package me.srcmaxim.characters;
 
 import me.srcmaxim.weapons.Sword;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+
+import javax.annotation.Resource;
 
 public class Warrior extends Character {
 
@@ -28,9 +28,8 @@ public class Warrior extends Character {
         return concreteSword;
     }
 
-    @Autowired
-    @Qualifier("sword")
-    public void setConcreteSword(@Qualifier("sword") Sword concreteSword) {
+    @Resource
+    public void setConcreteSword( Sword concreteSword) {
         this.concreteSword = concreteSword;
     }
 }
