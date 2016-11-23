@@ -21,10 +21,10 @@
         <property name="armorPoints" value="100"/>
     </bean>
 
-    <bean id="warriorSword" class="me.srcmaxim.weapons.Sword">
+    <bean class="me.srcmaxim.weapons.Sword">
         <property name="damagePoints" value="100"/>
     </bean>
-    <bean id="dragonFireBreath" class="me.srcmaxim.weapons.FireBreath">
+    <bean class="me.srcmaxim.weapons.FireBreath">
         <property name="damagePoints" value="100"/>
     </bean>
 
