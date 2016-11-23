@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class Dragon extends Character {
 
-    FireBreath dragonFireBreath;
+    FireBreath concreteFireBreath;
 
     public Dragon(String name, int strenghtPoints, int helthPoints, int armorPoints) {
         super(name, strenghtPoints, helthPoints, armorPoints);
@@ -19,15 +19,15 @@ public class Dragon extends Character {
     }
 
     protected int getAttackPoints() {
-        return dragonFireBreath.getDamagePoints() * (strenghtPoints + 30);
+        return concreteFireBreath.getDamagePoints() * (strenghtPoints + 30);
     }
 
-    public FireBreath getDragonFireBreath() {
-        return dragonFireBreath;
+    public FireBreath getConcreteFireBreath() {
+        return concreteFireBreath;
     }
 
     @Autowired
-    public void setDragonFireBreath(FireBreath dragonFireBreath) {
-        this.dragonFireBreath = dragonFireBreath;
+    public void setConcreteFireBreath(FireBreath concreteFireBreath) {
+        this.concreteFireBreath = concreteFireBreath;
     }
 }

@@ -2,14 +2,14 @@ package me.srcmaxim.characters;
 
 import me.srcmaxim.weapons.Sword;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 public class Warrior extends Character {
 
-    Sword warriorSword;
+    Sword concreteSword;
 
-    public Warrior(String name, int strenghtPoints, int helthPoints, int armorPoints, Sword warriorSword) {
+    public Warrior(String name, int strenghtPoints, int helthPoints, int armorPoints) {
         super(name, strenghtPoints, helthPoints, armorPoints);
-        this.warriorSword = warriorSword;
     }
 
     public Warrior() {
@@ -20,16 +20,16 @@ public class Warrior extends Character {
     }
 
     protected int getAttackPoints() {
-        return (warriorSword.getDamagePoints() + 10) * strenghtPoints;
+        return (concreteSword.getDamagePoints() + 10) * strenghtPoints;
     }
 
 
-    public Sword getWarriorSword() {
-        return warriorSword;
+    public Sword getConcreteSword() {
+        return concreteSword;
     }
 
     @Autowired
-    public void setWarriorSword(Sword warriorSword) {
-        this.warriorSword = warriorSword;
+    public void setConcreteSword(Sword concreteSword) {
+        this.concreteSword = concreteSword;
     }
 }
