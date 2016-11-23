@@ -29,7 +29,8 @@ public class Warrior extends Character {
     }
 
     @Autowired
-    public void setConcreteSword(Sword concreteSword) {
+    @Qualifier("sword")
+    public void setConcreteSword(@Qualifier("sword") Sword concreteSword) {
         this.concreteSword = concreteSword;
     }
 }

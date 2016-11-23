@@ -2,6 +2,7 @@ package me.srcmaxim.characters;
 
 import me.srcmaxim.weapons.FireBreath;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 
 public class Dragon extends Character {
 
@@ -27,7 +28,8 @@ public class Dragon extends Character {
     }
 
     @Autowired
-    public void setConcreteFireBreath(FireBreath concreteFireBreath) {
+    @Qualifier("fireBreath")
+    public void setConcreteFireBreath(@Qualifier("fireBreath") FireBreath concreteFireBreath) {
         this.concreteFireBreath = concreteFireBreath;
     }
 }
